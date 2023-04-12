@@ -12,3 +12,13 @@ http methods -> get , post , put,delete
 
 
 */
+
+const express = require('express');
+const app = express();
+app.use(express.static('public'))
+
+app.get('/', (req, res) =>{
+     res.send('Welcome')
+})
+
+app.listen(3000)
