@@ -3,6 +3,7 @@ const logger=require('./logger');
 const authenticating=require('./authenticating');
 const helmet=require('helmet');
 const morgan=require('morgan');
+const startupDebbuger=require('debug')('app:startup')
 const app=express();
 
 /*
@@ -35,6 +36,9 @@ app.use(helmet()) // add header to request
 
 // ENVIROMENTS 
 console.log(`app-env:${app.get('env')}`);
+
+// debbuger
+startupDebbuger('started...')
 
 
 app.get('/', function(req, res){
