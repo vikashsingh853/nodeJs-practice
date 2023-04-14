@@ -1,10 +1,12 @@
 const express = require('express');
-const logger=require('./logger');
-const authenticating=require('./authenticating');
+const logger=require('./middleware/logger');
+const authenticating=require('./middleware/authenticating');
 const helmet=require('helmet');
 const morgan=require('morgan');
+const home=require('./routes/home');
 const startupDebbuger=require('debug')('app:startup')
 const app=express();
+
 
 /*
 Middleware
@@ -12,6 +14,13 @@ configuration
 debugging
 templating engine
 */
+
+/*
+template engine 
+----->pug
+
+*/
+
 
 // Middleware and middleware functions
 //->middleware functions are functions that either return a response or passes control to anothre middleware
@@ -39,6 +48,13 @@ console.log(`app-env:${app.get('env')}`);
 
 // debbuger
 startupDebbuger('started...')
+
+// template engine
+app.set('view engine','pug');
+app.set('views','./views')
+
+app.use('/view',home)
+
 
 
 app.get('/', function(req, res){
