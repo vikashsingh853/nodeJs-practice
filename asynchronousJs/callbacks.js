@@ -20,3 +20,42 @@ function getUser(id,callback){
 function logUser(user){
     console.log(user);
 }
+
+
+// callback hell ------------------------------
+// nested asynchnous function create callback hell which is difficult to read and manage.....
+
+/*
+solution................................................................
+
+make anonymous function to named function and pass refrence to callback
+
+example:
+callback hell ------------------------------
+
+getUser(1,(user)=>{
+    getrepo(user,(repo)=>{
+        getcommits(repo,(commits)=>{
+            console.log(commits)
+        })
+    })
+})
+
+sol :
+getUser(1,getRepo);
+
+function getRepo(user){
+    getrepo(user,getCommits)
+}
+
+function getCommits(repo){
+ getcommits(repo,displayCommits)
+}
+
+function displayCommits(commits){
+   console.log(commits)
+}
+
+
+
+*/
