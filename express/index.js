@@ -59,6 +59,7 @@ app.get('/api/books/:id',(req,res)=>{
 // Handling post request
 
 app.post('/api/books',(req,res)=>{
+    console.log({req});
 
     // input validation
     // 400 bad request
@@ -100,6 +101,7 @@ app.put('/api/books/:id',(req,res)=>{
 // validator
 
 function bookValidator(name){
+    console.log({name});
     const schema=Joi.object({
         name:Joi.string().min(3).required()
     })
